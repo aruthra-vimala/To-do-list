@@ -11,12 +11,23 @@ function saveTasks() {
 }
 
 function displayTasks() {
+    // Sort by due date, then by priority
+    tasks.sort((a, b) => {
+        const dateA = new Date(a.dueDate || "9999-12-31");
+        const dateB = new Date(b.dueDate || "9999-12-31");
+
+        if (dateA < dateB) return -1;
+        if (dateA > dateB) return 1;
+
+        const priorityRank = { High: 1, Medium: 2, Low: 3 };
+        return priorityRank[a.priority] - priorityRank[b.priority];
+    });
+
     taskList.innerHTML = "";
 
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
         li.classList.add(`priority-${task.priority.toLowerCase()}`);
-        li.setAttribute("data-index", index);
         li.innerHTML = `
             <span><strong>${task.text}</strong> - Due: ${task.dueDate || "None"} - Priority: ${task.priority}</span>
             <span>
@@ -27,19 +38,6 @@ function displayTasks() {
         taskList.appendChild(li);
     });
 }
-
-// Drag-and-drop feature using SortableJS
-new Sortable(taskList, {
-    animation: 150,
-    onEnd: function (evt) {
-        const oldIndex = evt.oldIndex;
-        const newIndex = evt.newIndex;
-        const movedTask = tasks.splice(oldIndex, 1)[0];
-        tasks.splice(newIndex, 0, movedTask);
-        saveTasks();
-        displayTasks(); // Refresh to update button indices
-    }
-});
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
