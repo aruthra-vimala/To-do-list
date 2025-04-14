@@ -21,7 +21,6 @@ body {
     width: 90%;
 }
 
-
 h1 {
     text-align: center;
     color: #ff6f91;
@@ -29,44 +28,66 @@ h1 {
     font-size: 2.5em;
 }
 
-#task-form {
+/* 🧁 Form Styling */
+#todo-form {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 30px;
     padding: 20px;
 }
 
-#task-form input,
-#task-form select {
-    padding: 10px;
-    font-size: 1em;
+#todo-form input,
+#todo-form select {
+    padding: 14px 18px;
+    font-size: 1.1em;
     border: 2px solid #ffb6b9;
-    border-radius: 10px;
+    border-radius: 12px;
     outline: none;
     transition: 0.3s ease;
+    min-width: 180px;
 }
 
-#task-form input:focus {
+#todo-form input[type="text"] {
+    background-color: #fff0f5;
+}
+
+#todo-form input[type="date"] {
+    font-family: 'Quicksand', sans-serif;
+    color: #555;
+    background-color: #fff0f5;
+    border-color: #ffc1cc;
+    cursor: pointer;
+}
+
+#todo-form input:focus,
+#todo-form select:focus {
     border-color: #ff6f91;
+    box-shadow: 0 0 10px rgba(255, 111, 145, 0.3);
 }
 
-#task-form button {
-    padding: 10px 15px;
-    background-color: #ff6f91;
+/* 🌸 Cutesy Add Button */
+#todo-form button {
+    padding: 12px 20px;
+    background-color: #ffb6c1;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
 }
 
-#task-form button:hover {
-    background-color: #ff4e7a;
+#todo-form button:hover {
+    background-color: #ff69b4;
+    transform: scale(1.05);
 }
 
+/* 📋 Task List */
 ul {
     list-style: none;
     padding: 0;
@@ -121,6 +142,7 @@ button.delete {
     background-color: #ff4e50;
 }
 
+/* 🌈 Background Animation */
 canvas#bgCanvas {
     position: fixed;
     z-index: -1;
