@@ -9,7 +9,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 #app, .container {
@@ -19,85 +19,85 @@ body {
     box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.05);
     max-width: 700px;
     width: 90%;
+    position: relative;
 }
 
 h1 {
     text-align: center;
     color: #ff6f91;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 2.5em;
 }
 
-/* 🧁 Form Styling */
-#todo-form {
+form#todo-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 30px;
-    padding: 20px;
+    gap: 12px;
+    margin: 30px 0 20px;
 }
 
-#todo-form input,
-#todo-form select {
-    padding: 14px 18px;
-    font-size: 1.1em;
-    border: 2px solid #ffb6b9;
+form#todo-form input,
+form#todo-form select,
+form#todo-form button {
+    padding: 12px 16px;
+    font-size: 1em;
     border-radius: 12px;
+    border: 2px solid #ffc0cb;
     outline: none;
-    transition: 0.3s ease;
-    min-width: 180px;
+    transition: all 0.3s ease;
 }
 
-#todo-form input[type="text"] {
-    background-color: #fff0f5;
+form#todo-form input:focus,
+form#todo-form select:focus {
+    border-color: #ff6f91;
+    box-shadow: 0 0 5px #ffb6c1;
 }
 
-#todo-form input[type="date"] {
-    font-family: 'Quicksand', sans-serif;
-    color: #555;
+form#todo-form input[type="date"] {
     background-color: #fff0f5;
-    border-color: #ffc1cc;
+    color: #333;
     cursor: pointer;
 }
 
-#todo-form input:focus,
-#todo-form select:focus {
-    border-color: #ff6f91;
-    box-shadow: 0 0 10px rgba(255, 111, 145, 0.3);
-}
-
-/* 🌸 Cutesy Add Button */
-#todo-form button {
-    padding: 12px 20px;
-    background-color: #ffb6c1;
+form#todo-form button {
+    background-color: #ff6f91;
     color: white;
     border: none;
-    border-radius: 12px;
-    cursor: pointer;
     font-weight: bold;
-    font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+    cursor: pointer;
 }
 
-#todo-form button:hover {
-    background-color: #ff69b4;
-    transform: scale(1.05);
+form#todo-form button:hover {
+    background-color: #ff4e7a;
 }
 
-/* 📋 Task List */
 ul {
     list-style: none;
     padding: 0;
-    margin: 30px auto;
+    margin: 0 auto 20px;
     max-width: 600px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background-color: #ffb6c1;
+    border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-track {
+    background: #fff0f5;
 }
 
 li {
     background-color: #ffe3e3;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(255, 111, 145, 0.2);
@@ -125,13 +125,14 @@ li:hover {
 
 button.edit,
 button.delete {
-    margin-left: 10px;
+    margin-left: 8px;
     padding: 6px 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     color: white;
     font-weight: bold;
+    font-size: 0.9em;
 }
 
 button.edit {
@@ -142,7 +143,6 @@ button.delete {
     background-color: #ff4e50;
 }
 
-/* 🌈 Background Animation */
 canvas#bgCanvas {
     position: fixed;
     z-index: -1;
