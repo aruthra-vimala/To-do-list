@@ -1,4 +1,9 @@
-/* style.css */
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Quicksand', sans-serif;
@@ -9,7 +14,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 #app, .container {
@@ -20,81 +25,90 @@ body {
     max-width: 700px;
     width: 90%;
     position: relative;
+    z-index: 1;
 }
 
 h1 {
     text-align: center;
     color: #ff6f91;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 2.5em;
 }
 
-form#todo-form {
+/* Form styling */
+#todo-form {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
-    margin: 30px 0 20px;
+    margin-top: 20px;
 }
 
-form#todo-form input,
-form#todo-form select,
-form#todo-form button {
-    padding: 12px 16px;
+#todo-form input,
+#todo-form select {
+    padding: 12px 15px;
     font-size: 1em;
-    border-radius: 12px;
-    border: 2px solid #ffc0cb;
+    border: 2px solid #ffb6b9;
+    border-radius: 10px;
     outline: none;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
 }
 
-form#todo-form input:focus,
-form#todo-form select:focus {
+#todo-form input:focus,
+#todo-form select:focus {
     border-color: #ff6f91;
-    box-shadow: 0 0 5px #ffb6c1;
 }
 
-form#todo-form input[type="date"] {
-    background-color: #fff0f5;
-    color: #333;
+#todo-form input[type="date"] {
     cursor: pointer;
+    background-color: #fff0f3;
 }
 
-form#todo-form button {
+#todo-form button {
+    padding: 12px 20px;
     background-color: #ff6f91;
     color: white;
     border: none;
-    font-weight: bold;
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-form#todo-form button:hover {
+#todo-form button:hover {
     background-color: #ff4e7a;
 }
 
-ul {
+/* Task list container */
+#task-list {
     list-style: none;
     padding: 0;
-    margin: 0 auto 20px;
+    margin: 30px auto 0;
     max-width: 600px;
-    max-height: 400px;
+
+    max-height: 300px;
     overflow-y: auto;
+    padding-right: 10px;
+    scroll-behavior: smooth;
 }
 
-ul::-webkit-scrollbar {
+/* Cute scrollbar */
+#task-list::-webkit-scrollbar {
     width: 8px;
 }
 
-ul::-webkit-scrollbar-thumb {
-    background-color: #ffb6c1;
+#task-list::-webkit-scrollbar-track {
+    background: #ffe3e3;
     border-radius: 10px;
 }
 
-ul::-webkit-scrollbar-track {
-    background: #fff0f5;
+#task-list::-webkit-scrollbar-thumb {
+    background-color: #ff6f91;
+    border-radius: 10px;
+    border: 2px solid white;
 }
 
+/* Task item styling */
 li {
     background-color: #ffe3e3;
     margin-bottom: 12px;
@@ -105,12 +119,15 @@ li {
     justify-content: space-between;
     align-items: center;
     transition: transform 0.2s;
+    flex-wrap: wrap;
+    word-break: break-word;
 }
 
 li:hover {
     transform: scale(1.02);
 }
 
+/* Priority colors */
 .priority-low {
     border-left: 10px solid #b5ead7;
 }
@@ -123,16 +140,16 @@ li:hover {
     border-left: 10px solid #ff9aa2;
 }
 
+/* Buttons inside tasks */
 button.edit,
 button.delete {
-    margin-left: 8px;
+    margin-left: 10px;
     padding: 6px 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     color: white;
     font-weight: bold;
-    font-size: 0.9em;
 }
 
 button.edit {
@@ -143,6 +160,7 @@ button.delete {
     background-color: #ff4e50;
 }
 
+/* Canvas background */
 canvas#bgCanvas {
     position: fixed;
     z-index: -1;
